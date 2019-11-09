@@ -32,10 +32,20 @@ public class Dates {
 		
 		// getMonth method in local time and local date
 		Month month = localTime.getMonth();
-		System.out.println("Current month: " + month);
+		String monthToString = month.toString().substring(0,1) + month.toString().substring(1).toLowerCase();
+		System.out.println("Current month: " + monthToString);
 		
 		int day = localTime.getDayOfMonth();
-		System.out.println("Day of Month: " + day);
+		String dayToString = "";
+		String[]ordinal = {"n/a","st","nd","rd","th"};
+		for (int i = 0; i < ordinal.length; i++) {
+			if(day <=3) {
+				dayToString = String.valueOf(day) + ordinal[day];
+			} else {
+				dayToString = String.valueOf(day) + ordinal[ordinal.length-1];
+			}
+		}
+		System.out.println("Day of Month: " + dayToString);
 		
 		int seconds = localTime.getSecond();
 		System.out.println("Seconds: " + seconds);
